@@ -80,7 +80,7 @@ export function Headings() {
     // let data = await db.collection('waitingRoom').create(['googled']);
     // let datas = await db.collection('waitingRoom').create(['BLUE']);
     // let datass = await db.collection('GlobalEpoch').create(['recents']);
-    const bll = await db.collection('CollectionName').record(publicKey).call("updateHeartbeat",["ble",db.collection('GlobalEpoch').record('recents')]);
+    const bll = await db.collection('CollectionName').record(publicKey).call("addMember",[db.collection('User').record(publicKey!)]);
     // const bll = await db.collection('DragTest').get();
     // const data = await db.collection('CollectionName').create(['googled']);
     // const datas = await db.collection('CollectionName').record(publicKey).call("addMember",[db.collection('User').record("0x56b0572f5e5e264400eb4087f1df8542793a9eccf49764c4e2f0b466b69e95bf3acf9a9987c9b80231b8efda620397236c8dd6ecec64caa7bfced0d18f06bb20")] );
