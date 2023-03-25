@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Title, Container, Text, Stack, Button, Input, Group, InputLeftAddon, Grid, Avatar } from '@mantine/core'
+import { Title, Container, Text, Stack, Button, Input, Group, Grid, Avatar } from '@mantine/core'
 import { Auth } from '@polybase/auth';
 import { ethPersonalSignRecoverPublicKey } from '@polybase/eth';
 import { Polybase } from '@polybase/client';
