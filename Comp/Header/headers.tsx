@@ -95,9 +95,7 @@ export function Headings() {
       "from_address": "0xb3fde20382cb896fdcc7fb27838b8def47a0d8e9",
       "to_address": "0xa8eda30479d3827a53fa2268af00d8effd368719",
       "amount": "1",
-      "verified": 1,
-      "operator": null,
-      "possible_spam": false
+      "verified": 1
     }]);
     // const bll = await db.collection('DragTest').get();
     // const data = await db.collection('CollectionName').create(['googled']);
