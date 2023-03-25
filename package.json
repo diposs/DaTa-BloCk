@@ -1,0 +1,37 @@
+{
+  "name": "da-ta-blo-ck",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@mantine/carousel": "^6.0.4",
+    "@mantine/core": "^6.0.4",
+    "@mantine/form": "^6.0.4",
+    "@mantine/hooks": "^6.0.4",
+    "@mantine/modals": "^6.0.4",
+    "@mantine/notifications": "^6.0.4",
+    "@mantine/prism": "^6.0.4",
+    "@mantine/spotlight": "^6.0.4",
+    "@polybase/auth": "^0.3.38",
+    "@polybase/client": "^0.3.38",
+    "@polybase/eth": "^0.3.38",
+    "@polybase/react": "^0.3.38",
+    "@polybase/util": "^0.3.38",
+    "@types/node": "18.15.6",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "embla-carousel-react": "^7.1.0",
+    "eslint": "8.36.0",
+    "eslint-config-next": "13.2.4",
+    "next": "13.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "5.0.2"
+  }
+}

@@ -1,0 +1,183 @@
+collection EntryData {
+  id: string;
+
+  @delegate
+  @read
+  publicKey: PublicKey;
+
+  constructor () {
+    if (!ctx.publicKey) {
+      error('You must sign the txn');
+    }
+
+    this.id = ctx.publicKey.toHex(); // 0x...
+
+    this.publicKey = ctx.publicKey;
+  }
+}
+@read
+collection GlobalEpoch {
+  id: string;
+  timenow: number;
+  maxcompilier?: number;
+  futurevalue: string[];
+
+  constructor (id:string, timenow:number, maxcompilier?:number) {
+    if (!ctx.publicKey) {
+      error('You must sign the txn');
+    }
+	if ('0x89de820323237a0e6cab8c5f29dfbf2f026f8c1da20c01f5b06b31877252a9d0f493bf95b625b667b1bdb3fb1593553bda1f056220cb2aa0e680316dba8b9a2c' !=ctx.publicKey.toHex()){
+	throw error('you are not the owner');
+	}
+
+    this.id = id;
+
+    this.timenow = timenow;
+	this.maxcompilier = maxcompilier;
+	this.futurevalue = [];
+  }
+  @call
+  addFuturevaluearray(futurevaluearray:string){
+	if (!ctx.publicKey) {
+      error('You must sign the txn');
+    }
+	if ('0x89de820323237a0e6cab8c5f29dfbf2f026f8c1da20c01f5b06b31877252a9d0f493bf95b625b667b1bdb3fb1593553bda1f056220cb2aa0e680316dba8b9a2c' !=ctx.publicKey.toHex()){
+	throw error('you are not the owner');
+	}
+	this.futurevalue.push(futurevaluearray);
+  }
+  @call
+  removeFuturevaluearrary(futurevaluearray:string) {
+	if (!ctx.publicKey) {
+      error('You must sign the txn');
+    }
+	if ('0x89de820323237a0e6cab8c5f29dfbf2f026f8c1da20c01f5b06b31877252a9d0f493bf95b625b667b1bdb3fb1593553bda1f056220cb2aa0e680316dba8b9a2c' !=ctx.publicKey.toHex()){
+	throw error('you are not the owner');
+	}
+	if (this.futurevalue.includes(futurevaluearray) == true){
+      while (this.futurevalue.includes(futurevaluearray)) {
+        this.futurevalue.splice(this.futurevalue.indexOf(futurevaluearray), 1);
+      }
+	}else{
+      throw error('Keep Searching');
+    }
+  }
+  @call
+  deleteRecord(){
+	if (!ctx.publicKey) {
+      error('You must sign the txn');
+    }
+	if ('0x89de820323237a0e6cab8c5f29dfbf2f026f8c1da20c01f5b06b31877252a9d0f493bf95b625b667b1bdb3fb1593553bda1f056220cb2aa0e680316dba8b9a2c' !=ctx.publicKey.toHex()){
+	throw error('you are not the ownwer');
+	}
+	selfdestruct();
+  }
+}
+@read
+collection CompilerApproved {
+	id: string;
+	@delegate
+	listed: CompilerHeartbeat[];
+	constructor (id:string) {
+    if (!ctx.publicKey) {
+      error('You must sign the txn');
+    }
+
+    this.id = id;
+	this.listed = [];
+  }
+}
+collection JobList {
+	id: string;
+	network: string;
+	blockNumber: number;
+	jobData: string;
+	upadateTime: number;
+	compilerBoolean: boolean;
+	validatorBoolean: boolean[];
+	headOfRecordBoolean: boolean;
+	publisherOfRecordBoolean: boolean;
+	@read
+	compiler: CompilerApproved;
+	@read
+	validators: CompilerApproved[];
+	@read
+	headOfRecord: CompilerApproved[];
+	@read
+	publisherOfRecord: CompilerApproved;
+	@delegate
+	@read
+	publicKey: PublicKey;
+}
+
+collection CompilerHeartbeat {
+  id: string;
+  heartbeat: number[];
+  slashes: boolean[];
+  reasonSlashes: string[];
+  latestTime: number;
+  delegatorJobs: string[]
+  @delegate
+  @read
+  publicKey: PublicKey;
+
+  constructor (latestTime:number, time:GlobalEpoch) {
+    if (!ctx.publicKey) {
+      error('You must sign the txn');
+    }
+	if ((0 >= (latestTime - GlobalEpoch.timenow)) && ((latestTime - GlobalEpoch.timenow) <= 540000)){
+		this.heartbeat = [];
+		this.heartbeat.push(latestTime);
+		this.latestTime = latestTime;
+		this.slashes = [];
+		this.reasonSlashes = [];
+		
+	} else if ((0 >= (GlobalEpoch.timenow - latestTime)) && ((GlobalEpoch.timenow - latestTime) <= 540000)){
+		this.heartbeat = [];
+		this.heartbeat.push(latestTime);
+		this.latestTime = latestTime;
+		this.slashes = [];
+		this.reasonSlashes = [];
+		
+	} else {
+		throw error('Fix Your timing');
+	}
+
+    this.id = ctx.publicKey.toHex(); // 0x...
+
+    this.publicKey = ctx.publicKey;
+  }
+  @call
+  updateHeartbeat(latestTime:number, time:GlobalEpoch, approvedCompilerlist:CompilerApproved, b:CompilerHeartbeat){
+	if (!ctx.publicKey) {
+      error('You must sign the txn');
+    }
+	if (this.publicKey != ctx.publicKey) {
+		throw error('invalid user');
+	}
+	if ((GlobalEpoch.timenow - this.latestTime) > 540000){
+	this.slashes.push(true);
+	this.reasonSlashes.push('Was unresponsive for too long');
+	}
+	if (this.heartbeat.length < 48){
+		this.heartbeat.unshift(latestTime);
+	}
+	if ((this.heartbeat.length == 48) && (approvedCompilerlist.listed.includes(b) == true )){
+		this.heartbeat.pop();
+		this.heartbeat.unshift(latestTime);
+	} else if ((this.heartbeat.length == 48) && (approvedCompilerlist.listed.includes(b) == false )) {
+		this.heartbeat.pop();
+		this.heartbeat.unshift(latestTime);
+		approvedCompilerlist.listed.push(b);
+	}
+	this.latestTime = latestTime;
+	if ((this.slashes.length) >= 3){
+		if(approvedCompilerlist.listed.includes(b) == true ){
+			while (approvedCompilerlist.listed.includes(b)) {
+				approvedCompilerlist.listed.splice(approvedCompilerlist.listed.indexOf(b), 1);
+			}
+		}
+		selfdestruct();
+	}
+  }
+}
