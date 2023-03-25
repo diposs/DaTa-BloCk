@@ -53,7 +53,7 @@ export function Headings() {
 
     // Create user if not exists
     try {
-      const user = await db.collection('CollectionName').get();
+      const user = await db.collection('User').record(publicKey).get();
       console.log('User', user)
     } catch (e) {
       await db.collection('User').create([])
