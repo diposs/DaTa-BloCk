@@ -63,7 +63,7 @@ export function Headings() {
   }
 
   useEffect(() => {
-    auth.onAuthUpdate((authState) => {
+    auth!.onAuthUpdate((authState) => {
       setIsLoggedIn(!!authState)
 
       db.signer(async (data: string) => {
