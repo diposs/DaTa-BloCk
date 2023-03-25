@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Title, Container, Text, Stack, Button, Input, Group, Grid, Avatar } from '@mantine/core'
+import { Title, Container, Text, Stack, Button, Input, Group, InputLeftAddon, Grid, Avatar } from '@mantine/core'
 import { Auth } from '@polybase/auth';
 import { ethPersonalSignRecoverPublicKey } from '@polybase/eth';
 import { Polybase } from '@polybase/client';
@@ -10,12 +10,12 @@ const db = new Polybase({
   defaultNamespace: 'pk/0x51010b04ec558e9782ae7fdc57280d00393e57346bbc8cc0252f28c15bf568bcfb056b79a34417fb5d9b589b7ad3d3eb0554e224ea5f7a51a8bcc2768493b611/dasiybook',
 })
 
-const auth = new Auth();
+const auth = typeof window !== "undefined" ? new Auth() : null;
 
 
 async function getPublicKey() {
   const msg = 'Login with Chat'
-  const sig = await auth.ethPersonalSign(msg)
+  const sig = await auth!.ethPersonalSign(msg) 
   const publicKey = ethPersonalSignRecoverPublicKey(sig, msg)
   console.log('hdhd',publicKey)
   return '0x' + publicKey.slice(4)
@@ -35,10 +35,10 @@ export function Headings() {
   // const nfts: any = data?.data
 
   const signIn = async () => {
-    const res = await auth.signIn()
+    const res = await auth!.signIn()
 
     // get public
-    let publicKey = res.publicKey
+    let publicKey = res!.publicKey
 
     // if (!publicKey) {
       // publicKey = await getPublicKey()
@@ -47,7 +47,7 @@ export function Headings() {
     db.signer(async (data: string) => {
       return {
         h: 'eth-personal-sign',
-        sig: await auth.ethPersonalSign(data),
+        sig: await auth!.ethPersonalSign(data),
       }
     })
 
@@ -69,7 +69,7 @@ export function Headings() {
       db.signer(async (data: string) => {
         return {
           h: 'eth-personal-sign',
-          sig: await auth.ethPersonalSign(data),
+          sig: await auth!.ethPersonalSign(data),
         }
       })
     })
@@ -92,7 +92,7 @@ export function Headings() {
    console.log('dhhfed',bll);
   }
   const signingOut = async () => {
-    await auth.signOut()
+    await auth!.signOut()
     setIsLoggedIn(false)
   
   }
