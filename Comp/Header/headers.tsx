@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Title, Container, Text, Stack, Button, Input, Group, Grid, Avatar } from '@mantine/core'
+import { Title, Container, Text, Button, Input, Group, InputLeftAddon, Grid, Avatar, rem, Menu, Overlay} from '@mantine/core'
+import { IconStack3, IconApi, IconScan} from '@tabler/icons-react'
 import { Auth } from '@polybase/auth';
 import { ethPersonalSignRecoverPublicKey } from '@polybase/eth';
 import { Polybase } from '@polybase/client';
@@ -80,23 +81,7 @@ export function Headings() {
     // let data = await db.collection('waitingRoom').create(['googled']);
     // let datas = await db.collection('waitingRoom').create(['BLUE']);
     // let datass = await db.collection('GlobalEpoch').create(['recents']);
-    const bll = await db.collection('CollectionName').record('0x89de820323237a0e6cab8c5f29dfbf2f026f8c1da20c01f5b06b31877252a9d0f493bf95b625b667b1bdb3fb1593553bda1f056220cb2aa0e680316dba8b9a2c').call("addMember",[{
-      "block_number": "15846571",
-      "block_timestamp": "2022-10-28T12:30:47.000Z",
-      "block_hash": "0x5bdb81ef57386daa6ad3b9893216db9b15bb5d88f9c5524fabb106eace4c69c6",
-      "transaction_hash": "0x0e6bbf44bcc56309ed01797dbcbda46a50689c65fa861efe1f3f8024e2a7e775",
-      "transaction_index": 105,
-      "log_index": 133,
-      "value": "5000000000000000",
-      "contract_type": "ERC721",
-      "transaction_type": "Single",
-      "token_address": "0x3f457a3fd454b711867670846e7cc525b249b5b6",
-      "token_id": "1312",
-      "from_address": "0xb3fde20382cb896fdcc7fb27838b8def47a0d8e9",
-      "to_address": "0xa8eda30479d3827a53fa2268af00d8effd368719",
-      "amount": "1",
-      "verified": 1
-    }]);
+    //const bll = await db.collection('CollectionName').record('0x89de820323237a0e6cab8c5f29dfbf2f026f8c1da20c01f5b06b31877252a9d0f493bf95b625b667b1bdb3fb1593553bda1f056220cb2aa0e680316dba8b9a2c').call("addMember",[]);
     // const bll = await db.collection('DragTest').get();
     // const data = await db.collection('CollectionName').create(['googled']);
     // const datas = await db.collection('CollectionName').record(publicKey).call("addMember",[db.collection('User').record("0x56b0572f5e5e264400eb4087f1df8542793a9eccf49764c4e2f0b466b69e95bf3acf9a9987c9b80231b8efda620397236c8dd6ecec64caa7bfced0d18f06bb20")] );
@@ -105,7 +90,7 @@ export function Headings() {
    
    // console.log('dhhf',datass);
    // console.log('dhhfss',daddy);
-   console.log('dhhfed',bll);
+   //console.log('dhhfed',bll);
   }
   const signingOut = async () => {
     await auth!.signOut()
@@ -114,15 +99,76 @@ export function Headings() {
   }
 
   return (
+<>
     <Container fluid p={0}>
 	<Grid m={0}>
       <Grid.Col span={6} xs={6} sm={6} md={6} lg={1}>1</Grid.Col>
-      <Grid.Col className={classes.headerblock} lg={10}>{isLoggedIn && (<Button onClick={signingOut}>LogOUT</Button>)}</Grid.Col>
-      <Grid.Col span={6} xs={6} sm={6} md={6} lg={1}>
-	  {isLoggedIn ? (<Button onClick={createNFT}>LogOUT</Button>) : (
-        <Button onClick={signIn}>Login </Button>)}
+      <Grid.Col className={classes.headerblock} lg={10}>
+	  <center>
+	  <Menu>
+	  <Menu.Target>
+	  <Button size="md" variant="gradient" gradient={{ from: '#9C27B0', to: '#110214' }}>Toolbar</Button>
+	  </Menu.Target>
+	  <Menu.Dropdown>
+	  <Menu.Item color= "#551075" icon={<IconStack3 size={48} />}> Compiler</Menu.Item>
+		 <Menu.Item color= "#551075" icon={<IconScan size={48} />}> Scan</Menu.Item>
+		 <Menu.Item color= "#551075" icon={<IconApi size={48} />}> Api</Menu.Item>
+		</Menu.Dropdown>
+	  </Menu>
+	  </center>
+	  </Grid.Col>
+      <Grid.Col span={6} xs={6} sm={6} md={6} lg={1} >
+	  {isLoggedIn ? (<Button fullWidth  size="md" variant="gradient" gradient={{ from: '#9C27B0', to: '#110214' }} onClick={createNFT}>Login with Wallet</Button>) : (<Button fullWidth size="md" variant="gradient" gradient={{ from: '#9C27B0', to: '#110214' }} onClick={signIn}>Login</Button>)}
+	  
 	  </Grid.Col>
     </Grid>
-    </Container>
+	<Grid m={0} className={classes.overflowwrapeng}>
+      <Grid.Col span={1} xs={1} sm={1} md={1} lg={1}></Grid.Col>
+      <Grid.Col span={10}>
+	  <Container fluid pt='24vh'>
+		  <Title size="5rem" weight={900}>
+				A{''}<Text size="5rem" weight={900} variant="gradient"
+                span inherit gradient={{ from: '#9C27B0', to: '#110214' }}> searchable NFT media database</Text>{' '}with a decentralised compilation.
+      </Title>
+		  
+		  </Container>
+		  <Container fluid pt='10vh'>
+		  <Grid m={0} className={classes.overflowwrapeng}>
+		  <Grid.Col span='auto'><Text fz="xl">  About a searchable NFT database with a decentralised compilation. Main components that users should expect to work with are Compiler, Scan, API..</Text> 
+			  </Grid.Col>
+      <Grid.Col span='auto' ><Text fz="xl">  About a searchable NFT database with a decentralised compilation. Main components that users should expect to work with are Compiler, Scan, API..</Text> 
+		  </Grid.Col>
+		  </Grid>
+		  </Container>
+		  <Container pt='20vh'>
+		  <Grid m={0} className={classes.overflowwrapeng}>
+		  <Grid.Col span={2} >
+	   <IconStack3  color='black' size='10vh' />
+		  </Grid.Col>
+		  <Grid.Col span={10} >
+		  <Text fz="xl">  About a searchable NFT database with a decentralised compilation. Main components that users should expect to work with are Compiler, Scan, API..</Text> 
+		  </Grid.Col>
+		  <Grid.Col span={2} pt='10vh' >
+	   <IconApi  color='black' size='10vh' />
+		  </Grid.Col>
+		  <Grid.Col span={10} pt='10vh' >
+		  <Text fz="xl">  About a searchable NFT database with a decentralised compilation. Main components that users should expect to work with are Compiler, Scan, API..</Text> 
+		  </Grid.Col>
+		  <Grid.Col span={2} pt='10vh' >
+	   <IconScan  color='black' size='10vh' />
+		  </Grid.Col>
+		  <Grid.Col span={10} pt='10vh' >
+		  <Text fz="xl">  About a searchable NFT database with a decentralised compilation. Main components that users should expect to work with are Compiler, Scan, API..</Text> 
+		  </Grid.Col>
+		  </Grid>
+		  </Container>
+	  </Grid.Col>
+      <Grid.Col span={1} xs={1} sm={1} md={1} lg={1}>	  
+	  </Grid.Col>
+</Grid>
+</Container>
+
+		  </>
+		  
   )
 }
