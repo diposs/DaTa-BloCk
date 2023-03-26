@@ -1,7 +1,7 @@
 import { createStyles } from '@mantine/core';
 
 
-export default createStyles((theme) => ({
+export default createStyles(theme) => ({
     inner: {
       height: '60px',
       display: 'flex',
@@ -18,6 +18,8 @@ export default createStyles((theme) => ({
     },
   
     overflowwrapeng:{
+	    [theme.fn.largerThan('xs')]: {
 		overflow-wrap: 'anywhere',
 	},
-  }))
+    },
+  }));
