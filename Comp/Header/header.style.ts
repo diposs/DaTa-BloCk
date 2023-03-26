@@ -16,4 +16,4 @@ export default createStyles((theme) => ({
 	overflowwrapeng:{
 		overflow-wrap: 'anywhere',
 	},
-  }));
+  },));
