@@ -8,7 +8,7 @@ import useStyles from "./header.style";
 import { useCollection } from '@polybase/react';
 
 const db = new Polybase({
-  defaultNamespace: 'pk/0x51010b04ec558e9782ae7fdc57280d00393e57346bbc8cc0252f28c15bf568bcfb056b79a34417fb5d9b589b7ad3d3eb0554e224ea5f7a51a8bcc2768493b611/dasiybook',
+  defaultNamespace: "pk/0x89de820323237a0e6cab8c5f29dfbf2f026f8c1da20c01f5b06b31877252a9d0f493bf95b625b667b1bdb3fb1593553bda1f056220cb2aa0e680316dba8b9a2c/Data-Block",
 })
 
 const auth = typeof window !== "undefined" ? new Auth() : null;
@@ -122,7 +122,7 @@ export function Headings() {
 	  
 	  </Grid.Col>
     </Grid>
-	<Grid m={0} className={classes.overflowwrapeng}>
+	<Grid m={0} >
       <Grid.Col span={1} xs={1} sm={1} md={1} lg={1}></Grid.Col>
       <Grid.Col span={10}>
 	  <Container fluid pt='24vh'>
@@ -133,7 +133,7 @@ export function Headings() {
 		  
 		  </Container>
 		  <Container fluid pt='10vh'>
-		  <Grid m={0} className={classes.overflowwrapeng}>
+		  <Grid m={0} >
 		  <Grid.Col span='auto'><Text fz="xl">  About a searchable NFT database with a decentralised compilation. Main components that users should expect to work with are Compiler, Scan, API..</Text> 
 			  </Grid.Col>
       <Grid.Col span='auto' ><Text fz="xl">  About a searchable NFT database with a decentralised compilation. Main components that users should expect to work with are Compiler, Scan, API..</Text> 
@@ -141,7 +141,7 @@ export function Headings() {
 		  </Grid>
 		  </Container>
 		  <Container pt='20vh'>
-		  <Grid m={0} className={classes.overflowwrapeng}>
+		  <Grid m={0} >
 		  <Grid.Col span={2} >
 	   <IconStack3  color='black' size='10vh' />
 		  </Grid.Col>
