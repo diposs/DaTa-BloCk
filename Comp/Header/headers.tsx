@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Title, Container, Text, Button, Input, Group, InputLeftAddon, Grid, Avatar, rem, Menu, Overlay} from '@mantine/core'
+import { Title, Container, Text, Button, Input, Group,  Grid, Avatar, rem, Menu, Overlay} from '@mantine/core'
 import { IconStack3, IconApi, IconScan} from '@tabler/icons-react'
 import { Auth } from '@polybase/auth';
 import { ethPersonalSignRecoverPublicKey } from '@polybase/eth';
