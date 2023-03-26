@@ -1,7 +1,7 @@
 import { createStyles } from '@mantine/core';
 
 
-export default createStyles((theme) => ({
+export default createStyles((theme) => {
     headerblock: {
       [theme.fn.smallerThan('lg')]: {
         display: 'none',
@@ -16,4 +16,4 @@ export default createStyles((theme) => ({
 	overflowwrapeng:{
 		overflow-wrap: 'anywhere',
 	},
-  },));
+  });
