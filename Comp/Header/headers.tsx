@@ -57,7 +57,7 @@ export function Headings() {
       const user = await db.collection("A").create(["fgood", 4]);
       console.log('User', user)
     } catch (e) {
-      await db.collection("A").create(["fgood", 4]);
+      await db.collection("A").create("fgood").set({countered:4});
     }
 
     setIsLoggedIn(!!res)
