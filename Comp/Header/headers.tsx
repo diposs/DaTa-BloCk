@@ -54,10 +54,10 @@ export function Headings() {
 
     // Create user if not exists
     try {
-      const user = await db.collection('A').create([]);
+      const user = await db.collection('Acd').create([]);
       console.log('User', user)
     } catch (e) {
-      await db.collection("A").create([]);
+      await db.collection("Acd").create([]);
     }
 
     setIsLoggedIn(!!res)
@@ -78,7 +78,7 @@ export function Headings() {
 
    const createNFT = async () => {
     const publicKey = await getPublicKey();
-    let datad = await db.collection('B').create(["googled",db.collection('A').record("Fgood")]);
+    let datad = await db.collection('B').create(["googled",db.collection('Acd').record(publicKey)]);
     // let datas = await db.collection('waitingRoom').create(['BLUE']);
     // let datass = await db.collection('GlobalEpoch').create(['recents']);
     //const bll = await db.collection('CollectionName').record('0x89de820323237a0e6cab8c5f29dfbf2f026f8c1da20c01f5b06b31877252a9d0f493bf95b625b667b1bdb3fb1593553bda1f056220cb2aa0e680316dba8b9a2c').call("addMember",[]);
