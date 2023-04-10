@@ -54,10 +54,10 @@ export function Headings() {
 
     // Create user if not exists
     try {
-      const user = await db.collection('A').create(['fgood']);
+      const user = await db.collection('A').create([]);
       console.log('User', user)
     } catch (e) {
-      await db.collection("A").create(["fgood"]);
+      await db.collection("A").create([]);
     }
 
     setIsLoggedIn(!!res)
