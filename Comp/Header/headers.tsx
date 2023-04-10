@@ -57,7 +57,7 @@ export function Headings() {
       const user = await db.collection('User').record(publicKey!).get();
       console.log('User', user)
     } catch (e) {
-      await db.collection('A').create(["good",4])
+      await db.collection('A').create(['good',4]);
     }
 
     setIsLoggedIn(!!res)
