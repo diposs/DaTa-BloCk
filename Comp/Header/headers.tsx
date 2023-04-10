@@ -8,7 +8,7 @@ import useStyles from "./header.style";
 import { useCollection } from '@polybase/react';
 
 const db = new Polybase({
-  defaultNamespace: "pk/0xdc18a8cc9ccb7fc299d07cba29c278bb4b5a5c86cea8eef7a6d6b58f2322f8401cefa1478c9262b9730a32f34cf6c7e529ca337a0f1a50075ce1f4fbd368bbe6/test-block",
+  defaultNamespace: "pk/0xdc18a8cc9ccb7fc299d07cba29c278bb4b5a5c86cea8eef7a6d6b58f2322f8401cefa1478c9262b9730a32f34cf6c7e529ca337a0f1a50075ce1f4fbd368bbe6/blue-Black",
 })
 
 const auth = typeof window !== "undefined" ? new Auth() : null;
@@ -57,7 +57,7 @@ export function Headings() {
       const user = await db.collection('User').record(publicKey!).get();
       console.log('User', user)
     } catch (e) {
-      await db.collection('EntryData').create([])
+      await db.collection('A').create(['good',4])
     }
 
     setIsLoggedIn(!!res)
@@ -78,18 +78,18 @@ export function Headings() {
 
    const createNFT = async () => {
     const publicKey = await getPublicKey();
-    // let data = await db.collection('waitingRoom').create(['googled']);
+    let data = await db.collection('B').create(['googled',db.collection('A').record("good")]);
     // let datas = await db.collection('waitingRoom').create(['BLUE']);
     // let datass = await db.collection('GlobalEpoch').create(['recents']);
     //const bll = await db.collection('CollectionName').record('0x89de820323237a0e6cab8c5f29dfbf2f026f8c1da20c01f5b06b31877252a9d0f493bf95b625b667b1bdb3fb1593553bda1f056220cb2aa0e680316dba8b9a2c').call("addMember",[]);
     // const bll = await db.collection('DragTest').get();
     // const data = await db.collection('CollectionName').create(['googled']);
-    // const datas = await db.collection('CollectionName').record(publicKey).call("addMember",[db.collection('User').record("0x56b0572f5e5e264400eb4087f1df8542793a9eccf49764c4e2f0b466b69e95bf3acf9a9987c9b80231b8efda620397236c8dd6ecec64caa7bfced0d18f06bb20")] );
+    const datas = await db.collection('CollectionName').record("googled").call("doSomething",[] );
     // const daddy = await db.collection('User').get()
     
    
-   // console.log('dhhf',datass);
-   // console.log('dhhfss',daddy);
+   console.log('dhhf',data);
+   console.log('dhhfss',datas);
    //console.log('dhhfed',bll);
   }
   const signingOut = async () => {
