@@ -84,7 +84,7 @@ export function Headings() {
     //const bll = await db.collection('CollectionName').record('0x89de820323237a0e6cab8c5f29dfbf2f026f8c1da20c01f5b06b31877252a9d0f493bf95b625b667b1bdb3fb1593553bda1f056220cb2aa0e680316dba8b9a2c').call("addMember",[]);
     // const bll = await db.collection('DragTest').get();
     // const data = await db.collection('CollectionName').create(['googled']);
-    const datas = await db.collection('B').record("googled").call("doSomething",[] );
+    const datas = await db.collection('B').record(publicKey).call("deleteUser",[] );
     // const daddy = await db.collection('User').get()
     
    
