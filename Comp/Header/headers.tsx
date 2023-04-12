@@ -8,7 +8,7 @@ import useStyles from "./header.style";
 import { useCollection } from '@polybase/react';
 
 const db = new Polybase({
-  defaultNamespace: "pk/0xdc18a8cc9ccb7fc299d07cba29c278bb4b5a5c86cea8eef7a6d6b58f2322f8401cefa1478c9262b9730a32f34cf6c7e529ca337a0f1a50075ce1f4fbd368bbe6/blue-Black",
+  defaultNamespace: "pk/0xdc18a8cc9ccb7fc299d07cba29c278bb4b5a5c86cea8eef7a6d6b58f2322f8401cefa1478c9262b9730a32f34cf6c7e529ca337a0f1a50075ce1f4fbd368bbe6/blue-block",
 })
 
 const auth = typeof window !== "undefined" ? new Auth() : null;
@@ -54,10 +54,10 @@ export function Headings() {
 
     // Create user if not exists
     try {
-      const user = await db.collection('A').create([]);
+      const user = await db.collection('User').create([]);
       console.log('User', user)
     } catch (e) {
-      await db.collection("A").create([]);
+      await db.collection("User").create([]);
     }
 
     setIsLoggedIn(!!res)
