@@ -54,7 +54,7 @@ export function Headings() {
 
     // Create user if not exists
     try {
-      const user = await db.collection('User').create(['dipo']);
+      const user = await db.collection('User').record(publicKey).get();
       console.log('User', user)
     } catch (e) {
       await db.collection("User").create([]);
@@ -78,18 +78,18 @@ export function Headings() {
 
    const createNFT = async () => {
     const publicKey = await getPublicKey();
-    // let datad = await db.collection('B').create(["googled",db.collection('A').record(publicKey)]);
+    let datad = await db.collection('CompilerUser').create([db.collection('User').record(publicKey)]);
     // let datas = await db.collection('waitingRoom').create(['BLUE']);
     // let datass = await db.collection('GlobalEpoch').create(['recents']);
     //const bll = await db.collection('CollectionName').record('0x89de820323237a0e6cab8c5f29dfbf2f026f8c1da20c01f5b06b31877252a9d0f493bf95b625b667b1bdb3fb1593553bda1f056220cb2aa0e680316dba8b9a2c').call("addMember",[]);
     // const bll = await db.collection('DragTest').get();
     // const data = await db.collection('CollectionName').create(['googled']);
-    const datas = await db.collection('User').record(publicKey).call("deleteUser",[] );
+    // const datas = await db.collection('User').record(publicKey).call("deleteUser",[] );
     // const daddy = await db.collection('User').get()
     
    
-   // console.log('dhhf',datad);
-   console.log('dhhfss',datas);
+   console.log('dhhf',datad);
+   // console.log('dhhfss',datas);
    //console.log('dhhfed',bll);
   }
   const signingOut = async () => {
