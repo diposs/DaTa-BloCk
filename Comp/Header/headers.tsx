@@ -54,7 +54,7 @@ export function Headings() {
 
     // Create user if not exists
     try {
-      const user = await db.collection('User').create([]);
+      const user = await db.collection('User').create(['dipo']);
       console.log('User', user)
     } catch (e) {
       await db.collection("User").create([]);
