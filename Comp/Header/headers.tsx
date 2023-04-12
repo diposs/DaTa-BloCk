@@ -40,7 +40,7 @@ export function Headings() {
     const res = await auth!.signIn()
 
     // get public
-    let publicKey = res!.publicKey | null | undefined;
+    let publicKey: any  = res!.publicKey;
 
     // if (!publicKey) {
       // publicKey = await getPublicKey()
