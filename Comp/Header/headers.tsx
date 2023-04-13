@@ -79,10 +79,10 @@ export function Headings() {
 
    const createNFT = async () => {
     const publicKey = await getPublicKey();
-    let datad = await db.collection('CompilerUser').create([db.collection('User').record(publicKey)]);
+    // let datad = await db.collection('CompilerUser').create([db.collection('User').record(publicKey)]);
     // let datas = await db.collection('waitingRoom').create(['BLUE']);
     // let datass = await db.collection('GlobalEpoch').create(['recents']);
-    //const bll = await db.collection('CollectionName').record('0x89de820323237a0e6cab8c5f29dfbf2f026f8c1da20c01f5b06b31877252a9d0f493bf95b625b667b1bdb3fb1593553bda1f056220cb2aa0e680316dba8b9a2c').call("addMember",[]);
+    const bll = await db.collection('CollectionName').record('0x042780c505c6554bb306777212a3c2bcca6ded369abb023496a638979c18da622c6cd65405ba4b0fc5f86c31fa9c92658c8e3bdccfb0b9ded8d64d44ebfc33d4b8').call("setPoint",[9]);
     // const bll = await db.collection('DragTest').get();
     // const data = await db.collection('CollectionName').create(['googled']);
     // const datas = await db.collection('User').record(publicKey).call("deleteUser",[] );
