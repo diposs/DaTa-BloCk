@@ -79,19 +79,19 @@ export function Headings() {
 
    const createNFT = async () => {
     const publicKey = await getPublicKey();
-    // let datad = await db.collection('CompilerUser').create([db.collection('User').record(publicKey)]);
+    let datad = await db.collection('MonthlyContribution').create(['hhddhshhshs']);
     // let datas = await db.collection('waitingRoom').create(['BLUE']);
     // let datass = await db.collection('GlobalEpoch').create(['recents']);
-    const bll = await db.collection('CompilerUser').record("0x2780c505c6554bb306777212a3c2bcca6ded369abb023496a638979c18da622c6cd65405ba4b0fc5f86c31fa9c92658c8e3bdccfb0b9ded8d64d44ebfc33d4b8").call("setPoint",[9]);
+    //const bll = await db.collection('CompilerUser').record("0x2780c505c6554bb306777212a3c2bcca6ded369abb023496a638979c18da622c6cd65405ba4b0fc5f86c31fa9c92658c8e3bdccfb0b9ded8d64d44ebfc33d4b8").call("setPoint",[9]);
     // const bll = await db.collection('DragTest').get();
     // const data = await db.collection('CollectionName').create(['googled']);
     // const datas = await db.collection('User').record(publicKey).call("deleteUser",[] );
     // const daddy = await db.collection('User').get()
     
    
-   //console.log('dhhf',datad);
+   console.log('dhhf',datad);
    // console.log('dhhfss',datas);
-   console.log('dhhfed',bll);
+   // console.log('dhhfed',bll);
   }
   const signingOut = async () => {
     await auth!.signOut()
