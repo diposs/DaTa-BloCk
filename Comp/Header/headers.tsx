@@ -79,13 +79,18 @@ export function Headings() {
 
    const createNFT = async () => {
     const publicKey = await getPublicKey();
-    let datad = await db.collection("Testblablabla").create(["Big Man Ting",[212,12121,121351346,125125614,453621546256,2546682562,54143,1457157146,15345143,61457256,5,34,518,18,2682362,562457272,457256,2452456], [35673756,4567457457,34574573457,4574573457,345745757,3457457457,345745757,13464,658,5,576,34,3468683569368,2515,657268,379236,25714561,4568,268275,1456157,68268,1516,15268,28671,518,18]]);
+
+    // let datad =  .create(["Big Man Ting",[212,12121,121351346,125125614,453621546256,2546682562,54143,1457157146,15345143,61457256,5,34,518,18,2682362,562457272,457256,2452456], [35673756,4567457457,34574573457,4574573457,345745757,3457457457,345745757,13464,658,5,576,34,3468683569368,2515,657268,379236,25714561,4568,268275,1456157,68268,1516,15268,28671,518,18]]);
+
+
+
+
     // let datas = await db.collection('waitingRoom').create(['BLUE']);
     // let datass = await db.collection('GlobalEpoch').create(['recents']);
     //const bll = await db.collection('CompilerUser').record("0x2780c505c6554bb306777212a3c2bcca6ded369abb023496a638979c18da622c6cd65405ba4b0fc5f86c31fa9c92658c8e3bdccfb0b9ded8d64d44ebfc33d4b8").call("setPoint",[9]);
     // const bll = await db.collection('DragTest').get();
     // const data = await db.collection('CollectionName').create(['googled']);
-    // const datas = await db.collection('User').record(publicKey).call("deleteUser",[] );
+    const datas = await db.collection("Testblablabla").record("Big Man Ting").call("trashcollectorEvaluatorList",[db.collection("CompilerUser").record(publicKey)] );
     // const daddy = await db.collection('User').get()
     
    
