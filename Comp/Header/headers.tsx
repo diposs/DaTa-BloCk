@@ -94,7 +94,7 @@ export function Headings() {
     // const daddy = await db.collection('User').get()
     
    
-   console.log('dhhf',datad);
+   console.log('dhhf',datas);
    // console.log('dhhfss',datas);
    // console.log('dhhfed',bll);
   }
